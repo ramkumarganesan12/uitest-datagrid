@@ -1,0 +1,57 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --background-color: #ffffff;
+  --foreground-color: #000000;
+  --intermediate-grey: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+table {
+  border: none;
+  border-spacing: 0;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+}
+
+button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.25em 0.75em;
+  border-radius: 0.25em;
+
+  &:hover {
+    background: #e0e0e0;
+  }
+}
+
+/* Make the checkbox area bigger for mobile */
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+}

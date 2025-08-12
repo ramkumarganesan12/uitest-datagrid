@@ -1,0 +1,14 @@
+/* To-do: Remove important */
+
+.selectedRow{
+    background: #e0e0e0 !important;
+    color: #000000 !important;
+}
+
+.statusIndicator{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 5px;
+}
