@@ -1,32 +1,42 @@
 # UI Test - Data Grid
 
-This Data Grid Project is built for a UI test. The project use React, Vite, Vitest, React Testing Library.
+This project is a reusable Data Grid component built for a UI test using React, Vite, Vitest, and React Testing Library.
 
-# Run the Project
+## Features
 
-To run the project in development. Follow the steps.
+- Data Grid operates in two modes:
+  - With row selection: Select individual rows, select all, or deselect all. Custom actions can be performed on selected rows.
+  - Without row selection: Simple grid display.
+- Choose which columns to display and apply custom styles to column entries.
+- Supports dark mode for better accessibility and user experience.
 
-1. Install dependencies.
-2. Run the app in development mode
+## Status & Improvements
 
-with following commands in the terminal
+- A modal is used instead of an alert box for better aesthetics. Modal accessibility can be further improved.
+- Core functionalities are well-tested with around 95% coverage. Additional tests for modal interactions can be added.
+- Accessibility for core funcitons is prioritized, with a 100% score in Lighthouse. Linting plugins were used to maximize coverage. 
 
-```
+## Running the Project
+
+To start the project in development mode:
+
+```bash
 npm install
 npm run dev
 ```
 
-To run the unit tests
+To run unit tests:
 
-```
+```bash
 npm run test
 ```
 
-To view test results in a browser
+To view test results in the browser:
 
-```
+```bash
 npm run test:ui
 ```
-The results should open in the seperate browser tab.
 
+The test results will open in a separate browser tab.
 
+Thank you for reviewing this project!
