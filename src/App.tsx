@@ -1,12 +1,12 @@
-import { DataGrid } from './components/DataGrid/DataGrid';
+import { DataGrid } from './components/organisms/DataGrid/DataGrid';
 import { FileData } from './utils/data';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Modal } from './components/Modal/Modal';
-import { DownloadList } from './components/DownloadList/DownloadList';
+import { Modal } from './components/molecules/Modal/Modal';
 import type { ColumnDefinition, FileInfo } from './utils/types';
 import './App.css'
 import { Download } from 'lucide-react';
+import { DownloadList } from './components/molecules/DownloadList/DownloadList';
 
 function App() {
 

@@ -1,0 +1,46 @@
+.modalOverlay{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+}
+
+.modalContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-color);
+    padding: 2.5em;
+    position: relative;
+}
+
+.modalClose{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    background: transparent;
+    border: 1px solid var(--foreground-color);
+    display: flex;
+    padding: 2px 4px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover{
+        color: var(--background-color);
+        background: var(--foreground-color);
+    }
+}
+
+/* Model should not zoom out */
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .modalOverlay {
+        height: 100vh;
+        width: 100vw;
+    }
+}

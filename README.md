@@ -1,6 +1,6 @@
 # UI Test - Data Grid
 
-This project is a reusable Data Grid component built for a UI test using React, Vite, Vitest, and React Testing Library.
+ThThis project is a reusable Data Grid component built for a UI test using React, Vite, Vitest, and React Testing Library.
 
 ## Features
 
@@ -14,7 +14,8 @@ This project is a reusable Data Grid component built for a UI test using React, 
 
 - A modal is used instead of an alert box for better aesthetics. Modal accessibility can be further improved.
 - Core functionalities are well-tested with around 95% coverage. Additional tests for modal interactions can be added.
-- Accessibility for core funcitons is prioritized, with a 100% score in Lighthouse. Linting plugins were used to maximize coverage. 
+- Accessibility for core funcitons is prioritized, with a 100% score in Lighthouse. Linting plugins were used to maximize coverage.
+- Virtusalization or Pagination can be considered for larger data sets. 
 
 ## Running the Project
 
