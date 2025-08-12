@@ -14,21 +14,18 @@ with following commands in the terminal
 ```
 npm install
 npm run dev
-
 ```
 
 To run the unit tests
 
 ```
 npm run test
-
 ```
 
 To view test results in a browser
 
 ```
 npm run test:ui
-
 ```
 The results should open in the seperate browser tab.
 
