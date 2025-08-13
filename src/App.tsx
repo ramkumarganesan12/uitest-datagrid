@@ -33,7 +33,7 @@ function App() {
         textTransform: "capitalize"
       },
       statusIndictor: {
-        "available": "green"
+        "available": "green",
       }
     }
   ];
@@ -63,6 +63,8 @@ function App() {
         )
       }
     </>
+
+    
   )
 }
 

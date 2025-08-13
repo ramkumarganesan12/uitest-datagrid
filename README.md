@@ -16,6 +16,9 @@ ThThis project is a reusable Data Grid component built for a UI test using React
 - Core functionalities are well-tested with around 95% coverage. Additional tests for modal interactions can be added.
 - Accessibility for core funcitons is prioritized, with a 100% score in Lighthouse. Linting plugins were used to maximize coverage.
 - Virtusalization or Pagination can be considered for larger data sets. 
+- Column status indicator, can supoport a variety of data types as well as matchers(equals, range)
+- CoulmnSyles - can support conditional styles
+- Non visible columns can be unique and pivot
 
 ## Running the Project
 

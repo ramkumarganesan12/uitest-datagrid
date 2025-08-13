@@ -30,12 +30,12 @@ export const DataGrid = <T extends Record<string, string | number>>(
     }: DataGridProps<T>) => {
 
 
-    const [selectedSet, setSelectedSet] = useState<T[] | []>([]);
+    const [selectedSet, setSelectedSet] = useState<Set<T>>(new Set());
 
     // Extracting unique key for selection process
     const pivotKey = columnDefs.filter((column) => column.isUnique)[0]?.columnName || null;
 
-    // If colum Definitions is empty or unique key not set, display error message
+     // If colum Definitions is empty or unique key not set, display error message
     if (columnDefs.length === 0 || !pivotKey) {
         return (
             <div className="noData">No column selected or No unique column is set!</div>
@@ -52,19 +52,19 @@ export const DataGrid = <T extends Record<string, string | number>>(
     // Derived State for Custom checkbox
     let selectAllState: CheckboxState = "unchecked";
 
-    if (selectedSet.length === data.length) {
+    if (selectedSet.size === data.length) {
         selectAllState = "checked";
-    } else if (selectedSet.length > 0 && selectedSet.length < data.length) {
+    } else if (selectedSet.size > 0 && selectedSet.size < data.length) {
         selectAllState = "mixed";
     }
 
     // Handle Select All
     const handleSelectAllChange = () => {
-        const selectedSize = selectedSet.length;
+        const selectedSize = selectedSet.size;
         if ((selectedSize > 0 && selectedSize < data.length) || selectedSize === 0) {
-            setSelectedSet([...data]);
+            setSelectedSet(new Set(data));
         } else {
-            setSelectedSet([]);
+            setSelectedSet(new Set());
         }
     }
 
@@ -72,23 +72,25 @@ export const DataGrid = <T extends Record<string, string | number>>(
     const handleRowSelect = (index: number, checked: boolean) => {
         if (checked) {
             const selectedData = data[index];
-            // Usually we have to perform a duplicate or presence check or even use a SET for the state, however since checked removes the entry went ahead without the presence check
-            setSelectedSet((prev) => [...prev, selectedData])
+            // Set auto prevent duplicates
+            setSelectedSet((prev) => new Set(prev).add(selectedData))
         } else {
-            setSelectedSet((prev) => prev.filter((row) => row[pivotKey] !== data[index][pivotKey]))
+            setSelectedSet((prev) => {
+                const filtered = Array.from(prev).filter((row) => row[pivotKey] !== data[index][pivotKey]);
+                return new Set(filtered);
+            })
         }
     }
 
     return (
         <div className={`${styles.dataGrid} ${darkmode ? styles.darkMode : ''}`}>
-
             {
                 rowSelection &&
                 <div className={styles.dataToolBar}>
                     <Checkbox state={selectAllState} onChange={handleSelectAllChange} />
-                    <span className={styles.selectedInfo}>{selectedSet.length === 0 ? "None Selected" : `Selected : ${selectedSet.length}`}</span>
+                    <span className={styles.selectedInfo}>{selectedSet.size === 0 ? "None Selected" : `Selected : ${selectedSet.size}`}</span>
                     {tableAction && (
-                        <button onClick={() => tableAction(selectedSet)} aria-label={tableActionLabel}>
+                        <button onClick={() => tableAction(Array.from(selectedSet))} aria-label={tableActionLabel}>
                             {tableActionIcon && <span className="tableActionIcon">{tableActionIcon}</span>}
                             {tableActionLabel}
                         </button>
@@ -112,7 +114,7 @@ export const DataGrid = <T extends Record<string, string | number>>(
                             data.map((rowData, index) => (
                                 <DataRow
                                     key={`${rowData[pivotKey]}-${index}`}
-                                    selected={selectedSet.some((row) => row[pivotKey] === rowData[pivotKey])}
+                                    selected={selectedSet.has(rowData)}
                                     rowData={rowData}
                                     columnDefs={columnDefs}
                                     onRowSelect={(checked) => handleRowSelect(index, checked)}

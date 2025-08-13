@@ -20,14 +20,16 @@ export const DataRow = <T extends Record<string, string | number>>({
     return (
         <tr className={selected ? styles.selectedRow : ""}>
 
-            {selectable && <td>
-                <input
-                    type="checkbox"
-                    onChange={event => onRowSelect?.(event.target.checked)}
-                    checked={selected}
-                    aria-label={`${rowData[columnDefs[0].columnName]}`}
-                />
-            </td> } 
+            {selectable &&
+                <td>
+                    <input
+                        type="checkbox"
+                        onChange={event => onRowSelect?.(event.target.checked)}
+                        checked={selected}
+                        aria-label={`${rowData[columnDefs[0].columnName]}`}
+                    />
+                </td>
+            }
 
             {columnDefs.map((columnDef, index) => (
                 <td
